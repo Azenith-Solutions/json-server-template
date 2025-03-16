@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-modal {
+    position: fixed;
+    width: 100vh;
+    height: 100vh;
+    background-color: black;
+
+    .content-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 25px; 
+        
+        width: 400px;
+        height: 350px;
+        border: 1px solid #FFFFFF;
+        border-radius: 12px;
+        
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+
+        color: #FFFFFF;
+        img {
+            width: 125px;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        button {
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    }
+}
