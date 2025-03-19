@@ -1,0 +1,24 @@
+{
+  "name": "json-server-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:json-server": "json-server --watch server/db.json --port 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azenith-Solutions/json-server-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azenith-Solutions/json-server-template/issues"
+  },
+  "homepage": "https://github.com/Azenith-Solutions/json-server-template#readme",
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}

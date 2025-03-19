@@ -11,7 +11,7 @@ form.addEventListener('submit', async (event) => {
     };
 
     try {
-        const user = await userAuthentication(email, password);
+            const user = await userAuthentication(email, password);
 
         if (user) {
             window.location.href = "logado.html";
