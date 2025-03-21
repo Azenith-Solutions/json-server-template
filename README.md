@@ -1,1 +1,2 @@
-# json-server-template
+# Comando para rodar:
+# npm run start:json-server
