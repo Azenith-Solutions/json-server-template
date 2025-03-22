@@ -17,7 +17,8 @@ form.addEventListener('submit', async (event) => {
             window.location.href = "logado.html";
         }
     } catch (error) {
-        console.error("Erro ao autenticar" + error);
+        modalBuilder("Erro", "Em manutenção, tente novamente mais tarde.");
+        console.error("Erro ao autenticar " + error);
     }
 });
 
