@@ -6,12 +6,12 @@ form.addEventListener('submit', async (event) => {
     const email = document.getElementById('email_input').value;
     const password = document.getElementById('password_input').value;
 
-    if (!fieldValidations(email, password)) {
+    if (!passedValidations(email, password)) {
         return;
     };
 
     try {
-            const user = await userAuthentication(email, password);
+        const user = await userAuthentication(email, password);
 
         if (user) {
             window.location.href = "logado.html";
@@ -32,7 +32,7 @@ async function userAuthentication(email, password) {
     return responseJson.find(user => user.email === email && user.password === password);
 }
 
-function fieldValidations(email, password) {
+function passedValidations(email, password) {
     if (email.trim() === '' || password.trim() === '') {
         modalBuilder("Email e/ou Senha inválidos", "Preencha todos os campos");
         return false;
@@ -56,7 +56,7 @@ function fieldValidations(email, password) {
     }
 
     const hasNumber = /[0-9]/.test(password);
-    
+
     if (!hasNumber) {
         modalBuilder("Email e/ou Senha inválidos", "A senha deve conter pelo menos um número");
         return false;
