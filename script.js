@@ -3,8 +3,8 @@ const form = document.querySelector('.login-form');
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const email = document.getElementById('email_input').value;
-    const password = document.getElementById('password_input').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     if (!passedValidations(email, password)) {
         return;
@@ -30,11 +30,14 @@ async function userAuthentication(email, password) {
         throw new Error(`Erro ao buscar usuários (API): ${response.status}`);
     }
 
-    return responseJson.find(user => user.email === email && user.password === password);
+    const user = responseJson.find(user => user.email === email && user.password === password);
+
+    return user ? user : modalBuilder("Email ou senha inválidos", "Verifique se as informações estão corretas");
 }
 
 function passedValidations(email, password) {
     if (email.trim() === '' || password.trim() === '') {
+        console.log("entrei")
         modalBuilder("Email e/ou Senha inválidos", "Preencha todos os campos");
         return false;
     }
@@ -67,12 +70,17 @@ function passedValidations(email, password) {
 }
 
 function modalBuilder(title, description) {
+    console.log("entrei modal");
     const containerModal = document.createElement('div');
     containerModal.classList.add('container-modal');
 
     const contentModal = document.createElement('div');
     contentModal.classList.add('content-modal');
 
+    const topCloseButton = document.createElement('button');
+    topCloseButton.classList.add('top-close-button');
+    topCloseButton.innerText = '✖';
+    
     const imgModal = document.createElement('img');
     imgModal.src = 'assets/icon-warning.svg';
     imgModal.alt = 'Ícone de alerta';
@@ -83,17 +91,19 @@ function modalBuilder(title, description) {
     const descriptionModal = document.createElement('p');
     descriptionModal.innerText = description;
 
-    const buttonModal = document.createElement('button');
-    buttonModal.innerText = 'Fechar';
+    const bottomCloseButton = document.createElement('button');
+    bottomCloseButton.classList.add('bottom-close-button')
+    bottomCloseButton.innerText = 'Fechar';
 
+    contentModal.append(topCloseButton);
     contentModal.appendChild(imgModal);
     contentModal.appendChild(titleModal);
     contentModal.appendChild(descriptionModal);
-    contentModal.appendChild(buttonModal);
+    contentModal.appendChild(bottomCloseButton);
     containerModal.appendChild(contentModal);
     document.body.appendChild(containerModal);
 
-    buttonModal.addEventListener('click', () => {
+    bottomCloseButton.addEventListener('click', () => {
         containerModal.remove();
     });
 }
