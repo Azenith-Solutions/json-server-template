@@ -37,7 +37,6 @@ async function userAuthentication(email, password) {
 
 function passedValidations(email, password) {
     if (email.trim() === '' || password.trim() === '') {
-        console.log("entrei")
         modalBuilder("Email e/ou Senha inválidos", "Preencha todos os campos");
         return false;
     }
@@ -70,7 +69,10 @@ function passedValidations(email, password) {
 }
 
 function modalBuilder(title, description) {
-    console.log("entrei modal");
+    const imgModal = document.createElement('img');
+    imgModal.src = 'assets/icon-warning.svg';
+    imgModal.alt = 'Ícone de alerta';
+    
     const containerModal = document.createElement('div');
     containerModal.classList.add('container-modal');
 
@@ -81,9 +83,6 @@ function modalBuilder(title, description) {
     topCloseButton.classList.add('top-close-button');
     topCloseButton.innerText = '✖';
     
-    const imgModal = document.createElement('img');
-    imgModal.src = 'assets/icon-warning.svg';
-    imgModal.alt = 'Ícone de alerta';
 
     const titleModal = document.createElement('h2');
     titleModal.innerText = title;
